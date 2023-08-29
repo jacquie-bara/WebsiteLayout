@@ -1,0 +1,114 @@
+$title-font: 25px;
+$sub-title-font: 25px;
+$sub-title-value-font: 25px;
+$phone-title-font: 12px;
+$phone-sub-title-font: 16px;
+$phone-sub-title-value-font: 20px;
+$max-screen-width: 1260px;
+$max-phone-width: 600px;
+$max-phone-width: 375px;
+$isPhone: "(pointer:none), (pointer:coarse),(min-width: #{$max-phone-width}) and (max-width: #{$max-phone-width})";
+$color-top: #b2bdff;
+$color-left: #f5b2ff;
+$color-right-1: #ffb2b2;
+$color-right-2: #b2fff1;
+$div3-height: 200px;
+$phone-div3-height: 125px;
+$top-height: 100px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  .container {
+    overflow-y: hidden;
+    margin: 0 auto;
+    max-width: $max-screen-width;
+    .top {
+      background-color: $color-top;
+      height: $top-height;
+    }
+    .bottom {
+      display: flex;
+      .left {
+        background-color: $color-left;
+        flex: 1;
+        @media only screen and (max-width: $max-phone-width) {
+          flex: 0;
+        }
+      }
+      .right {
+        flex: 4;
+        padding-top: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+        @media #{$isPhone} {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+}
+.div3 {
+  text-align: center;
+  height: $div3-height;
+  @media #{$isPhone} {
+    height: $phone-div3-height;
+    transform: rotate(180deg);
+  }
+  .title {
+    white-space: nowrap;
+    font-size: $title-font;
+    padding-bottom: 10px;
+    @media #{$isPhone} {
+      font-size: $phone-title-font;
+    }
+    ::before {
+      content: "-";
+    }
+    ::after {
+      content: "-";
+    }
+  }
+  .container {
+    display: flex;
+    .sub-title {
+      flex: 1;
+      font-size: $sub-title-font;
+      @media #{$isPhone} {
+        font-size: $phone-sub-title-font;
+      }
+    }
+    .sub-title-value {
+      flex: 1;
+      font-size: $sub-title-value-font;
+      @media #{$isPhone} {
+        font-size: $phone-sub-title-value-font;
+      }
+    }
+  }
+}
+.div3:nth-child(odd) {
+  background-color: $color-right-1;
+  @media #{$isPhone} {
+    background-color: $color-right-2;
+  }
+}
+.div3:nth-child(even) {
+  background-color: $color-right-2;
+  @media #{$isPhone} {
+    background-color: $color-right-1;
+  }
+}
+.div3:not(:last-child) {
+  margin-bottom: 10px;
+}
+.div3:last-child {
+  @media #{$isPhone} {
+    margin-bottom: 30px;
+  }
+}
